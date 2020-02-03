@@ -18,21 +18,51 @@ const showSuccess = (input, message) => {
     const small = formControl.querySelector('small')
     small.inmerText = message
 }
-const valideEmail = email => {
+const checkEmail = input => {
     const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    //return re.test(String(email).toLowerCase());
+    if (re.test(input.value.trim())) {
+        showSuccess(input)
+    } else {
+        showErro(input, `${getFieldName(input)} is not valid !!`)
+    }
+}
+
+const getFieldName = (input) => {
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1)
+}
+const checkrequired = (inputs) => {
+    inputs.forEach(input => {
+        if (input.value.trim() === '') {
+            showErro(input, `${getFieldName(input)} is required !!`)
+        } else {
+            showSuccess(input)
+        }
+    })
+}
+
+const checkLength = (input, min, max) => {
+    if (input.value.length < min) {
+        showErro(input, `${getFieldName(input)} must be at least ${min}`)
+    } else if (input.value.length > max) {
+        showErro(input, `${getFieldName(input)} must be less than ${max}`)
+    } else {
+        showSuccess(input)
+    }
+}
+
+const Match = (one, tow) => {
+    if (one.value !== tow.value) {
+        showErro(tow, `${getFieldName(tow)} Dont match !!`)
+    }
 }
 
 form.addEventListener('submit', e => {
     e.preventDefault()
-    if (username.value === '') {
-        showErro(username, 'Username is required')
-    } else {
-        showSuccess(username)
-    }
-
-
-
-    checkrequired(username)
+    checkrequired([username, email, password, password2])
+    checkLength(username, 3, 15)
+    checkLength(password, 6, 25)
+    checkEmail(email)
+    Match(password, password2)
 
 })
