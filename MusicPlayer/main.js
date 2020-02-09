@@ -1,10 +1,10 @@
 const musicContainer = document.getElementById("music-container");
-const playBtn = document.querySelector(".action-btn-big");
+const playBtn = document.getElementById("play");
 const prevBtn = document.getElementById("prev");
 const nextBtn = document.getElementById("next");
 const audio = document.getElementById("audio");
 const progress = document.getElementById("progress");
-const progressContainer = document.getElementById("#progress_container");
+const progressContainer = document.getElementById("progress-container");
 const title = document.getElementById("title");
 const cover = document.getElementById("cover");
 
@@ -27,9 +27,16 @@ function playSong() {
   audio.play();
 }
 
+function pauseSong() {
+  musicContainer.classList.remove("play");
+  playBtn.querySelector("i.fas").classList.remove("fa-pause");
+  playBtn.querySelector("i.fas").classList.add("fa-play");
+  audio.pause();
+}
+
+
+
 playBtn.addEventListener("click", () => {
-  //   alert("dgdgf");
-  //   console.log("dflgkjf");
 
   const isPlaying = musicContainer.classList.contains("play");
   if (!isPlaying) {
@@ -38,3 +45,41 @@ playBtn.addEventListener("click", () => {
     pauseSong();
   }
 });
+
+prevBtn.addEventListener('click', e => {
+  songIndex--
+  if (songIndex < 0) {
+    songIndex = songs.length - 1
+  }
+  loadSong(songs[songIndex]);
+  playSong()
+})
+
+nextBtn.addEventListener('click', e => {
+  songIndex++
+  if (songIndex === songs.length) {
+    songIndex = 0
+  }
+
+  loadSong(songs[songIndex]);
+  playSong()
+})
+
+audio.addEventListener('timeupdate', e => {
+  const {
+    duration,
+    currentTime
+  } = e.srcElement
+
+  const progressPercent = (currentTime / duration) * 100
+
+  //console.log(progressPercent);
+  progress.style.width = `${progressPercent}%`
+})
+
+progressContainer.addEventListener('click', e => {
+
+  const width = this.clientWidth
+  console.log(width);
+
+})
