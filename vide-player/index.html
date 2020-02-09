@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Video Player</title>
+</head>
+
+<body>
+    <h1>Custom Video Player</h1>
+    <!-- <video controls
+        src="https://player.vimeo.com/external/189417403.sd.mp4?s=f10416ccbbeed95005d7b6b2c761cbcce69e5003&profile_id=164&oauth2_token_id=57447761"
+        id="video" class="screen" poster="poster.png"></video> -->
+
+    <video
+        src="https://player.vimeo.com/external/224889046.sd.mp4?s=2367519c7cd59a961688a3e7ba52c078076ec2d2&profile_id=164&oauth2_token_id=57447761"
+        id="video" class="screen" poster="poster.png"></video>
+    <div class="controls">
+        <button class="btn" id="play">
+            <i class="fa fa-play fa-2x"></i>
+        </button>
+        <button class="btn" id="stop">
+            <i class="fa fa-stop fa-2x"></i>
+        </button>
+        <input type="range" id="progress" class="progress" min="0" max="100" step="0.1" value="0" />
+        <span class="timestamp" id="timestamp">00:00</span>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
