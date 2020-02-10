@@ -14,12 +14,30 @@ async function fetchPost() {
   return data;
 }
 
+function fil(e) {
+  const term = e.target.value.toUpperCase();
+  const posts = document.querySelectorAll(".post");
+  posts.forEach(post => {
+    const title = post.document
+      .querySelector(".post-title")
+      .innerText.toUpperCase();
+    const body = post.document
+      .querySelector(".post-body")
+      .innerText.toUpperCase();
+    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+      post.style.display = "block";
+    } else {
+      post.style.display = "none";
+    }
+  });
+}
+
 async function showPosts() {
   const posts = await fetchPost();
   console.log(posts);
   posts.forEach(post => {
     const postElement = document.createElement("div");
-    postElement.classList.add("post");
+    postElement.classList.add("posts");
     postElement.innerHTML = ` <div class="number">${post.id}</div>
       <div class="post-info">
           <h2 class="post-title">Post ${post.id}</h2>
@@ -47,3 +65,5 @@ window.addEventListener("scroll", () => {
     showLoading();
   }
 });
+
+filter.addEventListener("input", fil);
