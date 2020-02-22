@@ -29,6 +29,7 @@ async function showPosts() {
   });
 }
 showPosts();
+
 function showLoading() {
   loading.classList.add("show");
   setTimeout(() => {
@@ -41,7 +42,11 @@ function showLoading() {
 }
 
 window.addEventListener("scroll", () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  const {
+    scrollTop,
+    scrollHeight,
+    clientHeight
+  } = document.documentElement;
 
   if (scrollTop + clientHeight >= scrollHeight - 9) {
     showLoading();
@@ -49,20 +54,40 @@ window.addEventListener("scroll", () => {
   }
 });
 
-filter.addEventListener("input", e => {
-  const term = e.target.value.toUpperCase();
-  const list = document.querySelectorAll(".post");
-  list.forEach(post => {
-    const title = post.document
-      .querySelector(".post-title")
-      .innerText.toUpperCase();
-    const body = post.document
-      .querySelector(".post-body")
-      .innerText.toUpperCase();
-    if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
-      post.style.display = "block";
+// filter.addEventListener("input", e => {
+//   const term = e.target.value.toUpperCase();
+//   const list = document.querySelectorAll(".post");
+//   list.forEach(post => {
+//     const title = post.document
+//       .querySelector(".post-title")
+//       .innerText.toUpperCase();
+//     const body = post.document
+//       .querySelector(".post-body")
+//       .innerText.toUpperCase();
+//     if (title.indexOf(term) > -1 || body.indexOf(term) > -1) {
+//       post.style.display = "block";
+//     } else {
+//       post.style.display = "none";
+//     }
+//   });
+// });
+
+
+
+filter.addEventListener('input', e => {
+  const text = e.target.value.toUpperCase()
+  posts = document.querySelectorAll('.post')
+  posts.forEach(post => {
+    const title = post.querySelector('.post-title').innerHTML.toUpperCase()
+    const body = post.querySelector('.post-body').innerHTML.toUpperCase()
+
+
+    if (title.indexOf(text) > -1 || body.indexOf(text) > -1) {
+      post.style.display = 'flex'
     } else {
-      post.style.display = "none";
+      post.style.display = 'none'
     }
-  });
-});
+
+  })
+
+})
