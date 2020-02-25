@@ -36,6 +36,7 @@ swap.addEventListener('click', () => {
     let buff = currencyEl_one.value
     currencyEl_one.value = currencyEl_two.value
     currencyEl_two.value = buff
+    calculate()
 })
 
 calculate()
