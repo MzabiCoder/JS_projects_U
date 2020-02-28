@@ -104,3 +104,9 @@ body {
 
 .show {
   opacity: 1; }
+
+.alert {
+  background-color: red;
+  height: 2rem;
+  width: 100px;
+  display: none; }

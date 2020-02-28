@@ -4,7 +4,7 @@ const money_minus = document.getElementById('money-minus');
 const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
-const amount = document.getElementById('amount');
+const amounte = document.getElementById('amount');
 
 const dummyTransactions = [{
         id: 1,
@@ -70,6 +70,20 @@ updateValue = () => {
 }
 
 
+form.addEventListener('submit', e => {
+    e.preventDefault()
+
+    let newElemnt = document.createElement('li')
+    let sign = amounte.value < 0 ? '-' : '+'
+    newElemnt.classList.add(amounte.value > 0 ? 'plus' : 'minus')
+    newElemnt.innerHTML = `
+    ${text.value}<span>${sign}${amounte.value}</span>
+    <button class="delete-btn">x</button>
+    `
+    list.appendChild(newElemnt)
+
+
+})
 
 
 function init() {
