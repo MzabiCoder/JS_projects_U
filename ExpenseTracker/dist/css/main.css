@@ -13,6 +13,15 @@ body {
 .container {
   margin: 2rem auto;
   min-width: 400px; }
+  .container #alert {
+    background: red;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    transition: all 0.5s ease-in-out;
+    display: none; }
   .container h1 {
     letter-spacing: 1px;
     margin: 0rem; }
@@ -104,9 +113,3 @@ body {
 
 .show {
   opacity: 1; }
-
-.alert {
-  background-color: red;
-  height: 2rem;
-  width: 100px;
-  display: none; }

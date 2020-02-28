@@ -4,7 +4,8 @@ const money_minus = document.getElementById('money-minus');
 const list = document.getElementById('list');
 const form = document.getElementById('form');
 const text = document.getElementById('text');
-const amounte = document.getElementById('amount');
+const amount = document.getElementById('amount');
+const alert = document.getElementById('alert');
 
 const dummyTransactions = [{
         id: 1,
@@ -44,18 +45,18 @@ const addTrans = trans => {
 
 }
 
-const del = id => {
-    trans.filter(item => item.id !== id)
-    console.log(trans);
 
-}
+
 
 updateValue = () => {
     const amounts = trans.map(item => item.amount)
+
     let total = trans.map(item => item.amount)
         .reduce((a, b) => a += b)
         .toFixed(2)
+
     balance.innerHTML = `$ ${total}`
+
 
     const income = amounts.filter(item => item > 0)
         .reduce((a, b) => a += b, 0).toFixed(2)
@@ -65,25 +66,53 @@ updateValue = () => {
     const expense = amounts.filter(item => item < 0)
         .reduce((a, b) => a += b, 0) * -1
 
+
     money_minus.innerHTML = `$${expense.toFixed(2)}`
 
+}
+
+function del(id) {
+    trans = trans.filter(item => item.id !== id)
+    init()
 }
 
 
 form.addEventListener('submit', e => {
     e.preventDefault()
 
-    let newElemnt = document.createElement('li')
-    let sign = amounte.value < 0 ? '-' : '+'
-    newElemnt.classList.add(amounte.value > 0 ? 'plus' : 'minus')
-    newElemnt.innerHTML = `
-    ${text.value}<span>${sign}${amounte.value}</span>
-    <button class="delete-btn">x</button>
-    `
-    list.appendChild(newElemnt)
+
+
+
+    if (text.value === '' || amount.value === '') {
+        alert.style.display = 'block'
+        setTimeout(() => {
+            alert.style.display = 'none'
+        }, 1000)
+
+    } else {
+
+        console.log(amount);
+
+
+        const newTrans = {
+            id: generateID(),
+            text: text.value,
+            amount: +amount.value
+        }
+
+
+
+        trans.push(newTrans)
+        addTrans(newTrans)
+        updateValue()
+    }
 
 
 })
+
+const generateID = () => {
+    return Math.floor(Math.random() * 100000000)
+}
 
 
 function init() {
