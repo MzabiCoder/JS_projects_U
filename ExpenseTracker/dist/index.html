@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.js"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/node-uuid/1.4.8/uuid.min.js"
+    />
+    <title>ExpenseTracker</title>
+  </head>
+
+  <body>
+    <h1>ExpenseTracker</h1>
+    <div class="container">
+      <h4>Balance</h4>
+      <h1 id="balance"></h1>
+      <div class="inc-exp-container">
+        <div>
+          <h4>Income</h4>
+          <p id="money-plus" class="money money-plus">+$0.00</p>
+        </div>
+        <div>
+          <h4>Expense</h4>
+          <p id="money-minus" class="money money-minus">+$0.00</p>
+        </div>
+      </div>
+      <h3>History</h3>
+      <ul id="list">
+        <li class="minus">
+          Cash <span>400</span> <button class="delete-btn">x</button>
+        </li>
+      </ul>
+      <h3>Add new transaction</h3>
+      <form action="">
+        <div class="form-control">
+          <label for="">Text</label>
+          <input type="text" id="text" placeholder="Enter text" />
+        </div>
+        <div class="form-control">
+          <label for="" id="amount">
+            Amount <br />
+            (negative-expense,positive-iconme)
+          </label>
+          <input type="number" id="amount" placeholder="enter amount" />
+        </div>
+        <button class="btn">Add transaction</button>
+      </form>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
