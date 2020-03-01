@@ -52,7 +52,7 @@ updateValue = () => {
     const amounts = trans.map(item => item.amount)
 
     let total = trans.map(item => item.amount)
-        .reduce((a, b) => a += b)
+        .reduce((a, b) => a += b,0)
         .toFixed(2)
 
     balance.innerHTML = `$ ${total}`

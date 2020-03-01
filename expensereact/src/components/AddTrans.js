@@ -1,23 +1,40 @@
-import React,{Fragment} from 'react'
+import React, { Fragment, useState,useContext } from 'react'
+import { GlobalContext } from '../context/state'
+import uuid from 'uuid'
+
 
 export const AddTrans = () => {
+
+  const [text, seText] = useState('')
+  const [amount, seTamount] = useState(0)
+  const { add } = useContext(GlobalContext)
+   
+  const Submit = e => {
+    e.preventDefault()
+    let newTran = {
+      id: uuid(),
+      text,
+      amount:parseInt(amount)
+    }
+    add(newTran)
+   }
     return (
         <Fragment>
         <h3>Add new transaction</h3>
-        <form action="" id="form">
+        <form action="" onSubmit={Submit} >
           <div className="form-control">
             <div id="alert">Please enter all fields !!</div>
-            <label for="">Text</label>
-            <input type="text" id="text" placeholder="Enter text" />
+            <label htmlFor="">Text</label>
+            <input type="text" value={text} onChange={(e)=>seText(e.target.value)} placeholder="Enter text" />
           </div>
           <div className="form-control">
-            <label for="">
+            <label htmlFor="">
               Amount <br />
               (negative-expense,positive-iconme)
             </label>
-            <input type="number" id="amount" placeholder="Enter amount..." />
+            <input type="number" value={amount} onChange={(e)=>seTamount(e.target.value)} placeholder="Enter amount..." />
           </div>
-          <button className="btn" type="submit">Add transaction</button>
+          <button className="btn" >Add transaction</button>
         </form>
         </Fragment>
     )
