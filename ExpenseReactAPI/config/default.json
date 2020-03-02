@@ -1,0 +1,4 @@
+{
+    "mongoURI":"mongodb://nabil1982:hakima1959@ds151163.mlab.com:51163/transaction",
+    "jwtSecret":"secret"
+}
