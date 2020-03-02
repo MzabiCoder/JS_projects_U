@@ -1,11 +1,14 @@
-import React, { Fragment,useContext } from 'react'
+import React, { Fragment,useContext,useEffect } from 'react'
 import { GlobalContext } from '../context/state'
 import { Transaction } from './Transaction'
 
 export const TransList = () => {
-  const {transactions} = useContext(GlobalContext)
+  const {transactions,getTransactions,loading} = useContext(GlobalContext)
    
-
+  useEffect(() => {
+    getTransactions()
+    // eslint-disable-next-line 
+},[])
    
     return (
         <Fragment>
@@ -13,7 +16,7 @@ export const TransList = () => {
         <ul id="list">
           {transactions.map(tran => (
             <Transaction key={tran.id} tran={tran}/>
-           ))}
+           )) }
          
         </ul> 
         </Fragment>

@@ -1,6 +1,6 @@
 import React, { Fragment, useState,useContext } from 'react'
 import { GlobalContext } from '../context/state'
-import uuid from 'uuid'
+
 
 
 export const AddTrans = () => {
@@ -12,7 +12,6 @@ export const AddTrans = () => {
   const Submit = e => {
     e.preventDefault()
     let newTran = {
-      id: uuid(),
       text,
       amount:parseInt(amount)
     }

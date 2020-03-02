@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "client":"cd .. npm start"
+    "client":"npm start --prefix expensereact",
+    "dev": "concurrently \"npm run client\" \"npm run server\""
+
     
   },
   "keywords": [],

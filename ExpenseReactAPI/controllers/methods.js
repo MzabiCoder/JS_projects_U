@@ -12,7 +12,7 @@ exports.getTransaction = async (req, res, next) => {
          return res.status(200).json({
              success:true,
              count: transactions.length,
-             date:transactions
+             data:transactions
          })
          
          
