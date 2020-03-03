@@ -17,12 +17,19 @@ body {
  
 }
 
+#title{
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding-bottom: 1rem;
+}
+
 .container {
   margin: 1rem auto;
   min-width: 400px;
 
+
   #alert {
-    background: red;
+    background: rgb(126, 57, 57);
     width: 100%;
     padding: 1rem 0;
     text-align: center;
@@ -61,7 +68,7 @@ body {
         letter-spacing: 4px;
         margin: 7px 0;
         &-plus {
-          color: #2ecc71;
+          color: #2e6dcc;
         }
         &-minus {
           color: #c0392b;
@@ -94,7 +101,7 @@ body {
         border-right: 5px solid #c0392b;
       }
       &.plus {
-        border-right: 5px solid #2ecc71;
+        border-right: 5px solid #2e6dcc;
       }
       .delete-btn {
         position: absolute;
@@ -133,7 +140,7 @@ body {
       width: 100%;
     }
     .btn {
-      background: #9c88ff;
+      background: #1f0797;
       box-shadow: $box-shadow;
       color: white;
       border: none;

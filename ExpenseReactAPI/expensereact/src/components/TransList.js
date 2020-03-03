@@ -12,7 +12,7 @@ export const TransList = () => {
    
     return (
         <Fragment>
-        <h3>History</h3>
+        <h3>Transactions</h3>
         <ul id="list">
           {transactions.map(tran => (
             <Transaction key={tran.id} tran={tran}/>
