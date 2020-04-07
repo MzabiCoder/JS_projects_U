@@ -16,22 +16,22 @@ const showData = data => {
   data.data.forEach(song => {
     output += ` 
         <li>
-        <span><strong>${song.artist.name}</strong>:${song.title}</span>
-        <button class="btn" data-artist=${song.artist.name} data-songtitle=${song.titlee} >Get Lyrics</button>
+        <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+        <button class="btn" data-artist=${song.artist.name} data-songtitle=${song.titlee}>Get Lyrics</button>
         </li>
         `;
   });
   result.innerHTML = `
-    <ul>
+    <ul class="songs">
     ${output}
     </ul>`;
-
+   
   //     result.innerHTML = `
   //     <ul class="songs">
   //     ${data.data.map(song => {
   //          `<li>
-  //         <span><strong>${song.artist.name}</strong>:${song.title}</span>
-  //         <button class="btn" data-artist=${song.artist.name} data-songtitle=${song.titlee} >Get Lyrics</button>
+  //          <span><strong>${song.artist.name}</strong> - ${song.title}</span>
+  //       <button class="btn" data-artist=${song.artist.name} data-songtitle=${song.titlee}>Get Lyrics</button>
   //         </li> `
   //     }).join('')
   // }
@@ -40,22 +40,38 @@ const showData = data => {
 
   console.log(`next is ${data.next} and prv is : ${data.prev}`);
 
-  if (data.prev || data.next) {
-    more.innerHTML = `
-        ${
-          data.prev
-            ? `<button class="btn" onclick="BackSongs(${data.prev})>Prev</button>`
-            : ""
-        }
-        ${
-          data.next
-            ? `<button class="btn"  onclick="NextSongs(${data.next})>Next</button>`
-            : ""
-        }
-        `;
-  } else {
-    more.innerHTML = "";
+  async function getMoreSongs(url) {
+    const res = await fetch(url);
+    const data = await res.json();
+    showData(data);
   }
+
+  if (data.prev || data.next) {
+      
+    more.innerHTML = `
+    ${data.prev ? '<button class="btn" >Previous</button>' : ''}
+    ${data.next ? '<button class="btn" onclick="getMoreSongs(`${data.next}`)">Next</button>':''}
+    `
+  } else {
+    more.innerHTML=''
+    }
+
+  // if (data.prev || data.next) {
+  //   more.innerHTML = `
+  //       ${
+  //         data.prev
+  //           ? `<button class="btn" onclick="BackSongs(${data.prev})>Prev</button>`
+  //           : ""
+  //       }
+  //       ${
+  //         data.next
+  //           ? `<button class="btn"  onclick="NextSongs(${data.next})>Next</button>`
+  //           : ""
+  //       }
+  //       `;
+  // } else {
+  //   more.innerHTML = "";
+  // }
 };
 
 form.addEventListener("submit", e => {
