@@ -1,0 +1,92 @@
+:root {
+    --border-color: #e3e5e4;
+    --background-color: #cec7ca;
+    --text-color: #34444f
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    margin: 2rem;
+}
+
+.draggable-list {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0;
+    list-style: none;
+}
+
+.draggable-list li {
+    background: white;
+    display: flex;
+    flex: 1;
+}
+
+.draggable-list li:not(:last-of-type) {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.draggable-list .number {
+    font-size: 1.2rem;
+    width: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: grey;
+
+}
+
+.draggable .person-name {
+    margin-left: 1rem;
+}
+
+.draggable {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .6rem;
+    width: 100%;
+    border: .2px solid grey
+}
+
+.draggable-list li.right .person-name {
+    color: #3ae374;
+}
+
+.draggable-list li.wrong .person-name {
+    color: #ff3838;
+}
+
+.draggable-list li.over .draggable {
+    background: rgb(223, 215, 215);
+}
+
+button {
+    background: var(--background-color);
+    border: none;
+    color: var(--text-color);
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all .7s ease;
+}
+
+button:active {
+    transform: scale(.9);
+}
+
+button:focus {
+    outline: none;
+}
