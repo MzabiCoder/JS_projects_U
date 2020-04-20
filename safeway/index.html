@@ -70,9 +70,112 @@
         align-items: center;
 
     }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        align-items: center;
+        grid-gap: 10px;
+
+    }
+
+    .grid .item {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 1px 1px 2px #ccc;
+    }
+
+    .item h4 {}
+
+    .item p {
+        color: var(--secondar-red);
+        font-weight: bold;
+    }
+
+    .grid .item div {
+        align-self: flex-start;
+        text-align: left;
+    }
+
+
+
+    .grid .item img {
+        width: 80px;
+        align-self: flex-end;
+
+    }
+
+    .app-footer {
+        background: #f4f4f4;
+        color: #444;
+        padding: 10px;
+        font-size: 14px;
+        margin-top: 1rem;
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        text-align: center;
+
+
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #splash {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: var(--primary-color);
+        z-index: 100;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        opacity: 1;
+        transition: all .7s ease-in-out;
+    }
+
+    @media (min-width:600px) {
+        .grid {
+            grid-template-columns: repeat(3, 1fr);
+
+        }
+
+        .grid .item img {
+            width: 150px;
+        }
+
+        #splash {
+            opacity: 0;
+        }
+    }
 </style>
 
 <body>
+    <div id="splash">
+        <img src="data:image/png;base64,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"
+            alt="">
+    </div>
     <div class="content">
         <header class="app-header">
             <div class="container">
@@ -95,38 +198,50 @@
         </div>
         <div class="grid container">
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
             <div class="item">
-                <h4>kldfjg</h4>
-                <p>kjdfhgjkgf</p>
+                <div>
+                    <h4>kldfjg</h4>
+                    <p>kjdfhgjkgf</p>
+                </div>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR4eMUwJmWR4itGXxg8spN2mBt_WVMx13dc6gAWSHLImefW9oRg&usqp=CAU"
                     alt="">
             </div>
@@ -153,6 +268,11 @@
         </ul>
     </footer>
 
+    <script>
+        setTimeout(() => {
+            document.querySelector('#splash').style.opacity = 0
+        }, 1500)
+    </script>
 </body>
 
 </html>
